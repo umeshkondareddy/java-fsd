@@ -1,0 +1,8 @@
+package p1;
+
+public class A {
+	protected  float f= 7.9f;
+	protected void display() {
+        System.out.println("The value of num is: " + f);
+	}
+} 

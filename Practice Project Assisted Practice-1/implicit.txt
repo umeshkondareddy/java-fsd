@@ -1,0 +1,13 @@
+public class implicit {
+
+	public static void main(String[] args)  
+	{ 
+// implicit conversion
+	int a = 7;  
+	long b = a;  
+	double c = b;  
+	System.out.println("Before conversion, int value "+a);  
+	System.out.println("After conversion, long value "+b);  
+	System.out.println("After conversion, double value "+c);  
+	}  
+	}

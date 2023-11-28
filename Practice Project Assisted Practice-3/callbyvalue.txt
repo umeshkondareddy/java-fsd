@@ -1,0 +1,34 @@
+class Classone 
+{
+    int value;
+
+    Classone(int value) 
+    {
+        this.value = value;
+    }
+}
+
+public class callbyvalue 
+{
+        static void modifyPrimitive(int x) 
+        {
+        x = 30;
+        }
+        static void modifyObjectReference(Classone obj) 
+        {
+        obj.value = 20;
+        }
+
+        public static void main(String[] args) 
+        {
+           int num = 5;
+           System.out.println("Before (primitive): " + num);
+           modifyPrimitive(num);
+           System.out.println("After (primitive): " + num);
+           Classone myObject = new Classone(200);
+           System.out.println("Before (object): " + myObject.value);
+           modifyObjectReference(myObject);
+           System.out.println("After (object): " + myObject.value);
+       }
+}
+

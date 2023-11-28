@@ -1,0 +1,25 @@
+class classtwo
+{
+    int value;
+
+    classtwo(int value) 
+    {
+        this.value = value;
+    }
+}
+
+public class callbyreference 
+{
+    static void modifyObject(classtwo obj) 
+    {
+        obj.value = 20;
+    }
+
+    public static void main(String[] args)
+    {
+    	classtwo ct = new classtwo(50);
+        System.out.println("Before: " + ct.value);
+        modifyObject(ct);
+        System.out.println("After: " + ct.value);
+    }
+}

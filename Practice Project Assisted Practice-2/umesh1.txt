@@ -1,0 +1,11 @@
+public class umesh1 
+{
+	    public int Count;
+	    public void display()
+	    {
+	        System.out.println("My self umesh.");
+	        System.out.println("Im doing " + Count + " Projects.");
+	    }
+	
+
+}

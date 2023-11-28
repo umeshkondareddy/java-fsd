@@ -1,0 +1,16 @@
+public class StringDemo
+ {
+
+	public static void main(String[] args) 
+	{
+		String s1="umesh";
+		StringBuffer sb= new StringBuffer(s1);
+		System.out.println(sb);
+		String s2="Konda";
+		StringBuilder sbuild =new StringBuilder(s2);
+		sbuild.append("Reddy");
+		System.out.println(sbuild);
+
+	}
+
+ }

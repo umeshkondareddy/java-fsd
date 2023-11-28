@@ -1,0 +1,14 @@
+import java.util.*; 
+
+public class Hmap { 
+
+	public static void main(String[] args) 
+	{ 
+		Map<String, Integer> map = new HashMap<>(); 
+		map.put("umesh", 20); 
+		map.put("konda", 50); 
+		map.put("reddy", 20); 
+		for (Map.Entry<String, Integer> e : map.entrySet()) 
+			System.out.println(e.getKey() + " "+ e.getValue()); 
+	} 
+}

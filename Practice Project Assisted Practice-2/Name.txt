@@ -1,0 +1,13 @@
+class Name 
+{
+    private String name;
+}
+
+public class Main
+{
+    public static void main(String[] main)
+    {
+        Name n = new Name();
+        n.name = "Umesh"; //code gives an error because name string is only used by class Name.
+    }
+}

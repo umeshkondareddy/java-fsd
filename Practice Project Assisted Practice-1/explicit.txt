@@ -1,0 +1,12 @@
+public class explicit 
+{
+	public static void main(String args[])  
+	{  
+	double a = 567.999;   
+	long b = (long)a;  
+	int c = (int)b;  
+	System.out.println("Before conversion: "+a);   
+	System.out.println("After conversion into long type: "+b);    
+	System.out.println("After conversion into int type: "+c);  
+	}  
+}

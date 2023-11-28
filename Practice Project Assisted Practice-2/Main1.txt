@@ -1,0 +1,11 @@
+public class Main1 
+{
+    public static void main(String[] args) 
+	{
+		umesh1 u = new umesh1();
+        u.Count = 4;
+        u.display();
+
+	}
+
+}
