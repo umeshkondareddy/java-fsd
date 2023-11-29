@@ -1,0 +1,14 @@
+import java.util.regex.*;  
+public class RegexExample1
+{  
+     public static void main(String args[])
+     {  
+           boolean b1 = Pattern.matches(".s", "as"); 
+           System.out.println(b1); 
+           System.out.println(Pattern.matches("[amn]", "anna"));
+           System.out.println(Pattern.matches("[amn]", "a"));
+           System.out.println(Pattern.matches("[amn]", "amma"));
+           System.out.println(Pattern.matches("[a-zA-Z0-9]{6}", "konda1"));  
+           System.out.println(Pattern.matches("[a-zA-Z0-9]{6}", "umesh123konda"));
+     }
+}
