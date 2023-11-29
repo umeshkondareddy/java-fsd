@@ -1,0 +1,33 @@
+
+abstract class Animals 
+{
+    abstract void eat();
+}
+class Lion extends Animals
+{
+    void eat() 
+    {
+        System.out.println("Lion eats meat");
+    }
+}
+
+class cow extends Animals
+{
+    void eat() 
+    {
+        System.out.println("cow eats grass");
+    }
+}
+
+public class oopsAbsraction 
+{
+    public static void main(String[] args)
+    {
+        Animals Lion= new Lion();
+        Lion.eat();
+
+        Animals cow = new cow();
+        cow.eat();
+    }
+
+}

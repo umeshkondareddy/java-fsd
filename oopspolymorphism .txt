@@ -1,0 +1,28 @@
+class pets {
+  public void animalSound() {
+    System.out.println("The pets makes a sound");
+  }
+}
+
+class Pig extends pets{
+  public void animalSound() {
+    System.out.println("The cat says: meow meow");
+  }
+}
+
+class Dog1 extends pets{
+  public void animalSound() {
+    System.out.println("The dog says: bow wow");
+  }
+}
+
+class oopspolymorphism {
+  public static void main(String[] args) {
+    pets myAnimals = new pets();  
+    pets myPig = new Pig();  
+    pets myDog1 = new Dog1();  
+    myAnimals.animalSound();
+    myPig.animalSound();
+    myDog1.animalSound();
+  }
+}
