@@ -1,0 +1,95 @@
+public class QueueOperations
+ {
+
+    private int[] arr;
+    private int front;
+    private int rear;
+
+    public QueueOperations(int capacity) 
+    {
+        arr = new int[capacity];
+        front = 0;
+        rear = 0;
+    }
+
+    public boolean isEmpty()
+    {
+        return front == rear;
+    }
+
+    public boolean isFull() 
+    {
+        return (rear + 1) % arr.length == front;
+    }
+
+    public void enqueue(int item) 
+    {
+        if (isFull()) 
+        {
+            System.out.println("Queue is full");
+            return;
+        }
+
+        rear = (rear + 1) % arr.length;
+        arr[rear] = item;
+    }
+
+    public int dequeue() 
+    {
+        if (isEmpty()) 
+        {
+            System.out.println("Queue is empty");
+            return -1;
+        }
+
+        int item = arr[front];
+        front = (front + 1) % arr.length;
+        return item;
+    }
+
+    public int peek() 
+    {
+        if (isEmpty()) 
+        {
+            System.out.println("Queue is empty");
+            return -1;
+        }
+
+        return arr[front];
+    }
+
+    public void printQueue()
+    {
+        if (isEmpty()) 
+        {
+            System.out.println("Queue is empty");
+            return;
+        }
+
+        System.out.println("Queue:");
+        for (int i = front; i < rear; i++) 
+        {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.print(arr[rear]);
+        System.out.println();
+    }
+
+    public static void main(String[] args)
+    {
+        QueueOperations queue = new QueueOperations(5);
+
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+
+        queue.printQueue();
+
+        int poppedElement = queue.dequeue();
+        System.out.println("Popped element: " + poppedElement);
+
+        queue.enqueue(4);
+        queue.printQueue();
+    }
+}
+

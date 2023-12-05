@@ -1,0 +1,92 @@
+public class Stackopertaion
+{
+
+    private int[] arr;
+    private int top;
+
+    public Stackopertaion(int capacity) 
+    {
+        arr = new int[capacity];
+        top = -1;
+    }
+
+    public boolean isEmpty()
+    {
+        return top == -1;
+    }
+
+    public boolean isFull() 
+    {
+        return top == arr.length - 1;
+    }
+
+    public void push(int item) 
+    {
+        if (isFull()) 
+        {
+            System.out.println("Stack is full");
+            return;
+        }
+
+        top++;
+        arr[top] = item;
+    }
+
+    public int pop() 
+    {
+        if (isEmpty()) 
+        {
+            System.out.println("Stack is empty");
+            return -1;
+        }
+
+        int item = arr[top];
+        top--;
+        return item;
+    }
+
+    public int peek() 
+    {
+        if (isEmpty()) 
+        {
+            System.out.println("Stack is empty");
+            return -1;
+        }
+
+        return arr[top];
+    }
+
+    public void printStack() 
+    {
+        if (isEmpty())
+        {
+            System.out.println("Stack is empty");
+            return;
+        }
+
+        System.out.println("Stack:");
+        for (int i = top; i >= 0; i--)
+        {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) 
+    {
+        Stackopertaion stack = new Stackopertaion(5);
+
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        stack.printStack();
+
+        int poppedElement = stack.pop();
+        System.out.println("Popped element: " + poppedElement);
+
+        stack.push(4);
+        stack.printStack();
+        
+    }
+}

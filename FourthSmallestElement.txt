@@ -1,0 +1,65 @@
+public class FourthSmallestElement 
+{
+
+    public static int fourthSmallest(int[] arr) 
+    {
+        if (arr.length < 4) 
+        {
+            throw new IllegalArgumentException("Array must have at least four elements");
+        }
+
+        int k = 3; // Index of the fourth smallest element
+        quickselect(arr, 0, arr.length - 1, k);
+        return arr[k];
+    }
+
+    private static void quickselect(int[] arr, int low, int high, int k) {
+        if (low < high) 
+        {
+            int pivotIndex = partition(arr, low, high);
+            if (pivotIndex == k)
+            {
+                return;
+            } else if (pivotIndex < k)
+            {
+                quickselect(arr, pivotIndex + 1, high, k);
+            } else {
+                quickselect(arr, low, pivotIndex - 1, k);
+            }
+        }
+    }
+
+    private static int partition(int[] arr, int low, int high) 
+    {
+        int pivot = arr[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) 
+        {
+            if (arr[j] <= pivot) 
+            {
+                i++;
+                swap(arr, i, j);
+            }
+        }
+
+        swap(arr, i + 1, high);
+        return i + 1;
+    }
+
+    public static void swap(int[] arr, int i, int j) 
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void main(String[] args) 
+    {
+        int[] arr = {5, 2, 4, 1, 0, 3, 7, 6};
+        int fourthSmallest = fourthSmallest(arr);
+        System.out.println("Fourth smallest element: " + fourthSmallest);
+    }
+}
+
+
