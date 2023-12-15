@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>GetVsPost</title>
+</head>
+<body>
+<a href="gethandler?name=krish+radha&address=123+gokul+mandir">Do a Servlet 
+GET</a><br><br>
+<form name=frm method=post action="posthandler">
+Name <input name="name" id="name" maxlenght=50 required><br><br>
+Address <input name="address" id="address" maxlength=100 required><br><br> 
+<button>Submit</button>
+</form> 
+</body> 
+</html>
