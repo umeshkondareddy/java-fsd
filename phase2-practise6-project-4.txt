@@ -1,0 +1,36 @@
+Option A: Using a Self-signed Certificate (For Testing Only)
+keytool -genkeypair -alias myapp -keyalg RSA -keysize 2048 -keystore your_keystore_name.jks -validity 3650
+Step 2: Configure Spring Boot for HTTPS
+server.port=8443
+server.ssl.key-store=classpath:your_keystore_name.jks
+server.ssl.key-store-password=your_keystore_password
+server.ssl.key-password=your_key_password
+
+Step 3: Create a Controller to Display a Page
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+
+    @GetMapping("/")
+    public String home() {
+        return "home";
+    }
+}
+Step 4: Create a Thymeleaf Template
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot HTTPS Example</title>
+</head>
+<body>
+
+<h2>Hello, HTTPS!</h2>
+
+</body>
+</html>
+
+Step 5: Run Your Application
+Run your Spring Boot application, and it will be accessible over HTTPS at https://localhost:8080

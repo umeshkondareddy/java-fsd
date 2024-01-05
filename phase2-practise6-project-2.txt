@@ -1,0 +1,62 @@
+Step 1: Create a new Spring Boot Project
+Step 2: Create a Model Class
+public class User {
+    private Long id;
+    private String name;
+    private String username;
+    // getters and setters
+}
+Step 3: Create a Service to Consume the RESTful Web Service
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+@Service
+public class UserService {
+
+    private final String apiUrl = "https://jsonplaceholder.typicode.com/users";
+
+    private final RestTemplate restTemplate;
+
+    public UserService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+    public User getUserById(Long userId) {
+        String url = apiUrl + "/" + userId;
+        return restTemplate.getForObject(url, User.class);
+    }
+}
+Step 4: Create a Controller
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class UserController {
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/users/{userId}")
+    public User getUser(@PathVariable Long userId) {
+        return userService.getUserById(userId);
+    }
+}
+Step 5: Configure RestTemplate
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+}
+Step 6: Run your Application
+Run your Spring Boot application, and it will expose an endpoint like http://localhost:8080/users/{userId}. You can make requests to this endpoint, and it will consume the RESTful web service and return the data.
