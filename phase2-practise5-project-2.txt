@@ -1,0 +1,94 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+// Custom event class
+class CustomEvent extends ActionEvent {
+    public CustomEvent(Object source, int id, String command) {
+        super(source, id, command);
+    }
+
+    public void customEventMethod() {
+        System.out.println("Custom event triggered!");
+    }
+}
+
+// Custom event listener interface
+interface CustomActionListener extends ActionListener {
+    void customActionPerformed(CustomEvent e);
+}
+
+// Custom button class
+class CustomButton extends JButton {
+    private CustomActionListener customActionListener;
+
+    public CustomButton(String text) {
+        super(text);
+
+        // Add action listener to handle default events
+        addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Default event triggered!");
+            }
+        });
+    }
+
+    // Set custom action listener
+    public void setCustomActionListener(CustomActionListener listener) {
+        this.customActionListener = listener;
+        // Add action listener to handle custom events
+        addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (customActionListener != null) {
+                    CustomEvent customEvent = new CustomEvent(e.getSource(), e.getID(), e.getActionCommand());
+                    customActionListener.customActionPerformed(customEvent);
+                }
+            }
+        });
+    }
+}
+
+// Main GUI class
+public class EventHandlingDemo extends JFrame {
+    public EventHandlingDemo() {
+        super("Event Handling Demo");
+
+        // Create a custom button
+        CustomButton customButton = new CustomButton("Click Me");
+
+        // Set custom action listener for the button
+        customButton.setCustomActionListener(new CustomActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Custom action performed!");
+            }
+
+            @Override
+            public void customActionPerformed(CustomEvent e) {
+                e.customEventMethod();
+            }
+        });
+
+        // Add the button to the frame
+        getContentPane().setLayout(new FlowLayout());
+        getContentPane().add(customButton);
+
+        // Set frame properties
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 200);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new EventHandlingDemo();
+            }
+        });
+    }
+}

@@ -1,0 +1,39 @@
+Step 1: Create a Spring Boot Project
+Open IntelliJ IDEA.
+Click on "Create New Project."
+Choose "Spring Initializr" as the project type.
+Set the project name, location, and base package.
+Select the desired options (Java, Spring Boot version, packaging type, etc.).
+Add the "Spring Web" dependency.
+Click "Next" and then "Finish."
+
+Step 2: Write a Simple Controller
+
+// src/main/java/com/example/demo/controller/HelloController.java
+
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api")
+public class HelloController {
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello, Spring Boot!";
+    }
+}
+
+
+Step 3: Run the Application
+
+mvn spring-boot:run
+
+Step 4: Access the Application
+Open your web browser and go to http://localhost:8080/api/hello. You should see the message "Hello, Spring Boot!" displayed on the page.
+
+
+
